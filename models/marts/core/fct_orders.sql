@@ -13,7 +13,8 @@ payment_amount as (
 select
     o.order_id,
     o.customer_id,
-    pa.total_amount as amount
+    order_date,
+    coalesce(pa.total_amount, 0) as amount
 from payment_amount pa
 join orders o
   on pa.order_id = o.order_id
